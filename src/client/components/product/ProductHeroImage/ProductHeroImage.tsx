@@ -55,6 +55,9 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
     return null;
   }
 
+  const width = DeviceType.DESKTOP ? 1024 : 233
+  const height = DeviceType.DESKTOP ? 576 : 413
+
   return (
     <GetDeviceType>
       {({ deviceType }) => {
@@ -63,7 +66,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
             <Anchor href={`/product/${product.id}`}>
               <div className={styles.container()}>
                 <AspectRatio ratioHeight={9} ratioWidth={16}>
-                  <img className={styles.image()} src={imageDataUrl} />
+                  <img className={styles.image()} height={height} src={imageDataUrl} width={width} />
                 </AspectRatio>
 
                 <div className={styles.overlay()}>
