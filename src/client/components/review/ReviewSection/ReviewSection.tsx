@@ -1,13 +1,11 @@
 import type { FormikErrors } from 'formik';
 import { useFormik } from 'formik';
 import type { FC } from 'react';
-import { memo } from 'react';
+import { memo, lazy } from 'react';
 import * as z from 'zod';
 
+
 import type { ReviewFragmentResponse } from '../../../graphql/fragments';
-import { PrimaryButton } from '../../foundation/PrimaryButton';
-import { TextArea } from '../../foundation/TextArea';
-import { ReviewList } from '../ReviewList';
 
 import * as styles from './ReviewSection.styles';
 
@@ -24,6 +22,16 @@ type Props = {
 type ReviewForm = {
   comment: string;
 };
+
+const TextArea = lazy(() =>
+  import('../../foundation/TextArea').then(({ TextArea }) => ({ default: TextArea }))
+)
+const PrimaryButton = lazy(() =>
+  import('../../foundation/PrimaryButton').then(({ PrimaryButton }) => ({ default: PrimaryButton }))
+)
+const ReviewList = lazy(() =>
+  import('../ReviewList').then(({ ReviewList }) => ({ default: ReviewList }))
+)
 
 export const ReviewSection: FC<Props> = memo(({ hasSignedIn, onSubmitReview, reviews }) => {
   const formik = useFormik<ReviewForm>({

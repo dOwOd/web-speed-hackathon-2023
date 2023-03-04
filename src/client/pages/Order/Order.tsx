@@ -1,11 +1,10 @@
 import type { FC } from 'react';
+import { lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
-import { OrderForm } from '../../components/order/OrderForm';
-import { OrderPreview } from '../../components/order/OrderPreview';
 import { useAuthUser } from '../../hooks/useAuthUser';
 import { useOrder } from '../../hooks/useOrder';
 import { useSubmitOrder } from '../../hooks/useSubmitOrder';
@@ -20,6 +19,13 @@ export const Order: FC = () => {
   const { updateCartItem } = useUpdateCartItem();
   const { submitOrder } = useSubmitOrder();
   const { order } = useOrder();
+
+  const OrderPreview = lazy(() =>
+    import('../../components/order/OrderPreview').then(({ OrderPreview }) => ({ default: OrderPreview }))
+  )
+  const OrderForm = lazy(() =>
+    import('../../components/order/OrderForm').then(({ OrderForm }) => ({ default: OrderForm }))
+  )
 
   if (authUserLoading) {
     return null;
