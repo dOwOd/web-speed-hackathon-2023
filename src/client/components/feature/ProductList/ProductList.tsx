@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { memo } from 'react';
-import { Suspense, lazy } from "react";
+import React, { lazy } from "react";
 
 import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
@@ -18,7 +18,6 @@ const ProductGridList = lazy(() =>
 
 export const ProductList: FC<Props> = memo(({ featureSection }) => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
       <GetDeviceType>
         {({ deviceType }) => {
           switch (deviceType) {
@@ -31,7 +30,6 @@ export const ProductList: FC<Props> = memo(({ featureSection }) => {
           }
         }}
       </GetDeviceType>
-    </Suspense>
   );
 });
 
