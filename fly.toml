@@ -1,3 +1,6 @@
+# fly.toml file generated for aged-fog-9204 on 2023-03-04T11:00:21+09:00
+
+app = "aged-fog-9204"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
