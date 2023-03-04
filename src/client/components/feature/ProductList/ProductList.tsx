@@ -26,6 +26,6 @@ export const ProductList: FC<Props> = memo(({ featureSection }) => {
       }}
     </GetDeviceType>
   );
-}, _.isEqual);
+});
 
 ProductList.displayName = 'ProductList';
