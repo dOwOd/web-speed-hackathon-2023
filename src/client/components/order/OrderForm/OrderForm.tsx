@@ -33,12 +33,14 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     formik.handleChange(event);
 
     const zipCode = event.target.value;
-    const address = [...(zipcodeJa[zipCode]?.address ?? [])];
-    const prefecture = address.shift();
-    const city = address.join(' ');
+    if (zipCode.length === 7) {
+      const address = zipcodeJa[zipCode]?.address ?? [];
+      const prefecture = address.shift();
+      const city = address.join(' ');
 
-    formik.setFieldValue('prefecture', prefecture);
-    formik.setFieldValue('city', city);
+      formik.setFieldValue('prefecture', prefecture);
+      formik.setFieldValue('city', city);
+    }
   };
 
   return (
