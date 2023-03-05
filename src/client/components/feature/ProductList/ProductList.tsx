@@ -1,6 +1,5 @@
 import type { FC } from 'react';
-import { memo } from 'react';
-import React, { lazy } from "react";
+import { memo, lazy } from 'react';
 
 import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
