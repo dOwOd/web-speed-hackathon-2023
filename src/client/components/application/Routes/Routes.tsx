@@ -1,13 +1,24 @@
 import type { FC } from 'react';
+import { lazy } from 'react'
 import * as Router from 'react-router-dom';
 
-import { NotFound } from '../../../pages/NotFound';
-import { Order } from '../../../pages/Order';
-import { OrderComplete } from '../../../pages/OrderComplete';
-import { ProductDetail } from '../../../pages/ProductDetail';
-import { Top } from '../../../pages/Top';
-
 import { useScrollToTop } from './hooks';
+
+const Top = lazy(() =>
+  import('../../../pages/Top').then(({ Top }) => ({ default: Top }))
+)
+const ProductDetail = lazy(() =>
+  import('../../../pages/ProductDetail').then(({ ProductDetail }) => ({ default: ProductDetail }))
+)
+const Order = lazy(() =>
+  import('../../../pages/Order').then(({ Order }) => ({ default: Order }))
+)
+const OrderComplete = lazy(() =>
+  import('../../../pages/OrderComplete').then(({ OrderComplete }) => ({ default: OrderComplete }))
+)
+const NotFound = lazy(() =>
+  import('../../../pages/NotFound').then(({ NotFound }) => ({ default: NotFound }))
+)
 
 export const Routes: FC = () => {
   useScrollToTop();

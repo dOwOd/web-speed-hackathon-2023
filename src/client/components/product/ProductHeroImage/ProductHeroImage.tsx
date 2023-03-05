@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import { memo } from 'react';
 import type { FC } from 'react';
-import type { FC } from 'react';
-
+  
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
