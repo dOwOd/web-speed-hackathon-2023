@@ -13,7 +13,8 @@ export const useSlider = ({ items }: { items: unknown[] }) => {
     const updateVisibleItemCount = throttle(500, () => {
       setVisibleItemCount(() => {
         const containerWidth = containerElementRef.current?.getBoundingClientRect().width ?? 0;
-        return Math.max(Math.floor(containerWidth / ITEM_MIN_WIDTH), 1);
+        const showItem = Math.floor(containerWidth / ITEM_MIN_WIDTH)
+        return showItem ? 1 : showItem;
       });
     });
 
