@@ -1,13 +1,20 @@
 import type { FC } from 'react';
-import { memo } from 'react';
+import { memo,lazy } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { Icon } from '../../foundation/Icon';
-import { OutlineButton } from '../../foundation/OutlineButton';
-import { PrimaryAnchor } from '../../foundation/PrimaryAnchor';
-import { PrimaryButton } from '../../foundation/PrimaryButton';
 
 import * as styles from './ProductPurchaseSection.styles';
+
+const PrimaryButton = lazy(() =>
+  import('../../foundation/PrimaryButton').then(({ PrimaryButton }) => ({ default: PrimaryButton }))
+)
+const PrimaryAnchor = lazy(() =>
+  import('../../foundation/PrimaryAnchor').then(({ PrimaryAnchor }) => ({ default: PrimaryAnchor }))
+)
+const OutlineButton = lazy(() =>
+  import('../../foundation/OutlineButton').then(({ OutlineButton }) => ({ default: OutlineButton }))
+)
 
 type Props = {
   product: ProductFragmentResponse | undefined;
